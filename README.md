@@ -1,13 +1,10 @@
 # coinCounter
- Script that gets n smallest td:ids and makes a json too make a transcation to add all of them together
-TODO:
+ Script that gets n smallest tx:ids and makes a json too make a transcation to add all of them together
 
-  Shell script fyrir linux sem virkar gerir:
-    Ná í unspent tx:id
-    pípa það í scriptið okkar
-    vista út json/xml fyrir 
+# TODO:
+Python er með library til að vinna með linux
+Svo er leið til að sortera json hluti eftir völdum gildum
     
     
     
- Script (Python eða Java):
-  sem tekur n minnstu txid og skilar json/xml fyrir þau til að nota í createrawtransaction
+Python3 script
