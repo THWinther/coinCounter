@@ -1,11 +1,8 @@
 # Höfundur Tómas Harry Ottósson, tho89@hi.is
-import json #notað til að vinna úr listunspent
-import os #notað til að kalla smileycoin-cli listunspent
+#
 
-class shortTransaction:
-    def __init__(self,txid,vout):
-        self.txid = txid
-        self.vout = vout
+import json #notað til að vinna úr JSON hlutum
+import os #notað til að kalla smileycoin-cli listunspent
 
 
 #Fall sem er comperator til að sortera færslum eftir amount
@@ -21,8 +18,8 @@ while not isinstance(n, int):
         print("please pick a valid integer!\n")
 
 unspent = os.popen('smileycoin-cli listunspent') # tekur inn unix shell command og skilar hvað er prentað í breytu
-unspent = unspent.read() # jason er núna útak úr os kallinu
-jason = json.loads(unspent) # færir hreinan streng yfiri í JSON
+unspent = unspent.read() # nær í output úr os kallinu
+jason = json.loads(unspent) # færir hreinan streng yfir í JSON
 smallest = sorted(jason,key=jsonSorter,reverse=False) #Flokkar minnst til lengst 
 
 # Gildi sem sér um að segja notanda hversu mikið af smileycoins hann á
@@ -39,9 +36,16 @@ for i in range(0,n):
     amount =amount+smallest[i].get('amount')
 print(f'Total coins available: {amount}')
 
-theTransActionArr = []
-for p in smallest:
-    tempObj = shortTransaction(p["txid",p["vout"]])
+#Býr til fylki af hlutum sem er txid svo vout, þetta er notað í smið af json skjalsin
+theTransAction = []
+for i in range (0,n):
+    theTransAction.append({
+        'txid': smallest[i]['txid'],
+        'vout': smallest[i]['vout']
+    })
 
-theTransaction = json.dumps(theTransActionArr)
-print(theTransaction)
+#Býr til skjal sem vistar JSON hlutin
+with open('smallest.json', 'w') as output:
+    json.dump(theTransAction, output)
+
+print("Data saved as smallest.json")
