@@ -1,5 +1,4 @@
 # Höfundur Tómas Harry Ottósson, tho89@hi.is
-#
 
 import json #notað til að vinna úr JSON hlutum
 import os #notað til að kalla smileycoin-cli listunspent
@@ -20,7 +19,9 @@ while not isinstance(n, int):
 unspent = os.popen('smileycoin-cli listunspent') # tekur inn unix shell command og skilar hvað er prentað í breytu
 unspent = unspent.read() # nær í output úr os kallinu
 jason = json.loads(unspent) # færir hreinan streng yfir í JSON
-smallest = sorted(jason,key=jsonSorter,reverse=False) #Flokkar minnst til lengst 
+
+#Flokkar minnst til lengst
+smallest = sorted(jason,key=jsonSorter,reverse=False) 
 
 # Gildi sem sér um að segja notanda hversu mikið af smileycoins hann á
 # Til að nota í færsluna
