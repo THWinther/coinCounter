@@ -2,6 +2,7 @@
 
 import json #notað til að vinna úr JSON hlutum
 import os #notað til að kalla smileycoin-cli listunspent
+import sys
 
 
 #Fall sem er comperator til að sortera færslum eftir amount
@@ -18,6 +19,11 @@ while not isinstance(n, int):
 
 unspent = os.popen('smileycoin-cli listunspent') # tekur inn unix shell command og skilar hvað er prentað í breytu
 unspent = unspent.read() # nær í output úr os kallinu
+
+# Ef það er villa að ná í transaction frá veskinu þá hættir forritið
+if "error" in unspent: 
+    sys.exit(unspent)
+
 jason = json.loads(unspent) # færir hreinan streng yfir í JSON
 
 #Flokkar minnst til lengst
