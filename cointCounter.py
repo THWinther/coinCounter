@@ -17,14 +17,14 @@ while not isinstance(n, int):
     except:
         print("please pick a valid integer!\n")
 
-unspent = os.popen('smileycoin-cli listunspent') # tekur inn unix shell command og skilar hvað er prentað í breytu
+unspent = os.popen('smileycoin-cli listunspent') # kallar á unix shell command
 unspent = unspent.read() # nær í output úr os kallinu
 
 # Ef það er villa að ná í transaction frá veskinu þá hættir forritið
 if "error" in unspent: 
     sys.exit(unspent)
 
-jason = json.loads(unspent) # færir hreinan streng yfir í JSON
+jason = json.loads(unspent) # kasta streng yfir í JSON
 
 #Flokkar minnst til lengst
 smallest = sorted(jason,key=jsonSorter,reverse=False) 
@@ -40,10 +40,11 @@ if n > len(smallest):
 
 #prentar hversu háa upphæð af coins notandi hefur
 for i in range(0,n):
-    amount =amount+smallest[i].get('amount')
+    amount = amount + smallest[i].get('amount')
 print(f'Total coins available: {amount}')
 
-#Býr til fylki af hlutum sem er txid svo vout, þetta er notað í smið af json skjalsin
+# Búa til fylki af hlutum sem er í forminu
+# txid:<strengur> svo vout:<int>, þetta er notað í smið af json skjalsin
 theTransAction = []
 for i in range (0,n):
     theTransAction.append({
@@ -51,8 +52,10 @@ for i in range (0,n):
         'vout': smallest[i]['vout']
     })
 
-#Býr til skjal sem vistar JSON hlutin
+
+
+#Vistar skjal sem inniheldur json hlutin
 with open('smallest.json', 'w') as output:
-    json.dump(theTransAction, output)
+    json.dump(theTransAction, output, indent=4)
 
 print("Data saved as smallest.json")
