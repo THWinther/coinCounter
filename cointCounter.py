@@ -56,6 +56,6 @@ for i in range (0,n):
 
 #Vistar skjal sem inniheldur json hlutin
 with open('smallest.json', 'w') as output:
-    json.dump(theTransAction, output, indent=4)
+    json.dump(theTransAction, output)
 
 print("Data saved as smallest.json")
