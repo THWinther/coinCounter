@@ -1,10 +1,6 @@
 # coinCounter
- Script that gets n smallest tx:ids and makes a json too make a transcation to add all of them together
+ A python Script that gets the n smallest tx:ids from you smilecoin wallet and builds a JSON to use in the first part of createrawtransaction. It will also tell you how many coins you have when it is done running.
 
-# TODO:
-Python er með library til að vinna með linux
-Svo er leið til að sortera json hluti eftir völdum gildum
-    
-    
-    
-Python3 script
+# requirements
+ Python3
+ smilecoin-cli
