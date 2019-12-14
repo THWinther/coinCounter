@@ -13,5 +13,7 @@
 ## Usage
 just type 'python3 coinCounter.py'
 
+it will ask you how many txids you would like to place into the transaction
 
-It will then save a json file in the directory it was ran in 
+
+It will then save a json file in the directory it was ran in (smallest.json)
