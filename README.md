@@ -11,6 +11,10 @@
  So far it only works with the smilecoin-cli for Linux
 
 ## Usage
-give the program use chmod to let the program run
+give the program permission to run (chmod)
+
+
 then just type 'python3 coinCounter.py'
+
+
 It will then save a json file in the directory it was ran in 
