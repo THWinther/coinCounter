@@ -9,3 +9,8 @@
  Python3
  
  So far it only works with the smilecoin-cli for Linux
+
+## Usage
+give the program use chmod to let the program run
+then just type 'python3 coinCounter.py'
+It will then save a json file in the directory it was ran in 
